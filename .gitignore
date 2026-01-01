@@ -1,0 +1,64 @@
+# ------------------------------
+# Build Results
+# ------------------------------
+bin/
+obj/
+out/
+TestResults/
+
+# BuildHost folders for multi-targeted builds (inside obj/)
+**/obj/**/BuildHost-*/
+
+# ------------------------------
+# Visual Studio / Rider / IDE Files
+# ------------------------------
+.vs/
+*.user
+*.suo
+*.sln.docstates
+*.DotSettings.user
+.idea/
+.vscode/
+*.code-workspace
+
+# ------------------------------
+# NuGet Packages
+# ------------------------------
+*.nupkg
+packages/
+# NuGet package restore folders
+*.nuget.cache
+.nuget/
+
+# ------------------------------
+# EF Core Migrations / Database
+# ------------------------------
+*.db
+*.mdf
+*.ldf
+*.sqlite
+Migrations/
+
+# ------------------------------
+# Logs and temporary files
+# ------------------------------
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.pid
+*.seed
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ------------------------------
+# Tooling / Global configs
+# ------------------------------
+.vscode/
+*.global.json
+*.dotnet/
