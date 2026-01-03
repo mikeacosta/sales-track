@@ -1,5 +1,53 @@
+# Build results
 **/bin/
 **/obj/
-**/.vscode/
+
+# User-specific files
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+
+# IDEs and editors
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
 Dockerfile
-.dockerignore
+docker-compose.yml
+docker-compose.*.yml
+
+# Logs
+**/*.log
+
+# Test results
+**/TestResults/
+
+# NuGet
+**/packages/
+.nuget/
+
+# Environment & secrets
+**/*.env
+**/appsettings.Development.json
+**/appsettings.Local.json
+
+# Documentation
+README.md
+docs/
+
+# Node / frontend (if present)
+**/node_modules/
+npm-debug.log
+yarn-error.log

@@ -32,6 +32,8 @@ COPY --from=build /app/publish .
 # ASP.NET Core settings
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
+# 4022 is JetBrains Rider's default .NET Core debugger port on Linux
+EXPOSE 4022   
 
 # Run the app
 ENTRYPOINT ["dotnet", "SalesTrack.API.dll"]
