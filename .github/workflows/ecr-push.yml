@@ -28,7 +28,8 @@ jobs:
       - name: Run unit tests
         run: dotnet test SalesTrack.Test/SalesTrack.Test.csproj \
               --configuration Release \
-              --no-restore                          
+              --no-restore \
+              --verbosity normal                        
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
