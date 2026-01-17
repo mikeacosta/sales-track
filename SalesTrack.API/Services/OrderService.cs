@@ -23,4 +23,10 @@ public class OrderService : IOrderService
             .Select(order => _mapper.ToOrderDto(order))
             .ToList();
     }
+
+    public async Task<OrderDto?> GetOrderForCustomerAsync(int customerId, int orderId)
+    {
+        var order = await _orderRepository.GetOrderForCustomerAsync(customerId, orderId);
+        return order is null ? null : _mapper.ToOrderDto(order);
+    }
 }

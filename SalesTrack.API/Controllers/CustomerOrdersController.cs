@@ -22,4 +22,12 @@ public sealed class CustomerOrdersController : ControllerBase
 
         return Ok(orders);
     }
+
+    [HttpGet("{orderId:int}")]
+    public async Task<ActionResult<OrderDto>> GetOrder(int customerId, int orderId)
+    {
+        var order = await _orderService.GetOrderForCustomerAsync(customerId, orderId);
+
+        return order is null ? NotFound() : Ok(order);
+    }
 }

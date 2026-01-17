@@ -93,4 +93,59 @@ public class OrderServiceTests
             r => r.GetOrdersByCustomerIdAsync(customerId),
             Times.Once);
     }
+    
+    [Fact]
+    public async Task GetOrderForCustomerAsync_ReturnsMappedOrderDto_WhenOrderExists()
+    {
+        // Arrange
+        int customerId = 5;
+        int orderId = 1;
+
+        var order = new Order
+        {
+            Id = orderId,
+            CustomerId = customerId,
+            OrderDate = DateTimeOffset.UtcNow,
+            TotalAmount = 123.45m
+        };
+
+        _orderRepositoryMock
+            .Setup(r => r.GetOrderForCustomerAsync(customerId, orderId))
+            .ReturnsAsync(order);
+
+        // Act
+        var result = await _service.GetOrderForCustomerAsync(customerId, orderId);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(order.Id, result!.Id);
+        Assert.Equal(order.CustomerId, result.CustomerId);
+        Assert.Equal(order.TotalAmount, result.TotalAmount);
+
+        _orderRepositoryMock.Verify(
+            r => r.GetOrderForCustomerAsync(customerId, orderId),
+            Times.Once);
+    }
+
+    [Fact]
+    public async Task GetOrderForCustomerAsync_ReturnsNull_WhenOrderDoesNotExist()
+    {
+        // Arrange
+        int customerId = 5;
+        int orderId = 99;
+
+        _orderRepositoryMock
+            .Setup(r => r.GetOrderForCustomerAsync(customerId, orderId))
+            .ReturnsAsync((Order?)null);
+
+        // Act
+        var result = await _service.GetOrderForCustomerAsync(customerId, orderId);
+
+        // Assert
+        Assert.Null(result);
+
+        _orderRepositoryMock.Verify(
+            r => r.GetOrderForCustomerAsync(customerId, orderId),
+            Times.Once);
+    }
 }
